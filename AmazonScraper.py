@@ -19,17 +19,20 @@ def check_price():
     #title = soup.find(id="productTitle").get_text()
     price = soup.find(id="priceblock_ourprice").get_text()
     converted_price = float(price[0:5])
+    #send an email whenever price drops below Rs1400.
     if(converted_price < 1.400):
         send_mail()
-    print(converted_price)
+    #print(converted_price)
+    #print(title.strip())
 
 def send_mail():
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.ehlo()
     server.starttls()
     server.ehlo()
+    #you can perform two step verification on gmail to generate a desktop password
     server.login('-your email id-', '-your password-')
-    subject = "buy speakers"
+    subject = "Buy speaker now"
     body = 'Check the speaker link https://www.amazon.in/Mivi-Moonstone-Portable-Wireless-Output-Black/dp/B07J4T9LZG/ref=sr_1_2?keywords=mivi+speakers&qid=1568106165&s=gateway&sr=8-2'
     msg = f"Subject:{subject}\n\n{body}"
     server.sendmail(
@@ -42,5 +45,6 @@ def send_mail():
     
 while(True):
     check_price()
+    #everyday
     time.sleep(60*60*24)
         
