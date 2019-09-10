@@ -2,7 +2,7 @@
 """
 Created on Mon Sep  9 00:59:05 2019
 
-@author: sport
+@author: sportykush
 """
  
 import requests
